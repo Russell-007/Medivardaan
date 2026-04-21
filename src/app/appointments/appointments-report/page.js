@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect,Loader2 } from "react";
 import { Settings, FileSpreadsheet, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -191,7 +191,6 @@ export default function AppointmentsReportPage() {
             {isLoading ? (
                <TableRow>
                  <TableCell colSpan={10} className="text-center py-8">
-                   <Loader2 className="h-6 w-6 animate-spin mx-auto text-primary" />
                    <p className="text-sm text-gray-500 mt-2">Loading appointments...</p>
                  </TableCell>
                </TableRow>
@@ -210,11 +209,11 @@ export default function AppointmentsReportPage() {
             ) : currentItems.map((item, index) => (
               <TableRow key={item.id || item.appointmentID || index} >
                 <TableCell className="dark:text-white/75">{indexOfFirstItem + index + 1}</TableCell>
-                <TableCell className="dark:text-white/75">{item.name || item.patientName || "N/A"}</TableCell>
-                <TableCell className="dark:text-white/75">{item.mobile || item.mobileNo || "N/A"}</TableCell>
+                <TableCell className="dark:text-white/75">{item.name || item.firstName || "N/A"}</TableCell>
+                <TableCell className="dark:text-white/75">{item.mobile || item.mobileNo1 || "N/A"}</TableCell>
                 <TableCell className="dark:text-white/75">{item.clinic || item.clinicName || "N/A"}</TableCell>
                 <TableCell className="dark:text-white/75">{item.doctor || item.doctorName || "N/A"}</TableCell>
-                <TableCell className="dark:text-white/75">{item.date || item.appointmentDate || "N/A"}</TableCell>
+                <TableCell className="dark:text-white/75">{item.date || item.startDate || "N/A"}</TableCell>
                 <TableCell className="dark:text-white/75">{item.time || item.appointmentTime || "N/A"}</TableCell>
                 <TableCell className="dark:text-white/75">{item.bookedBy || item.createdBy || "N/A"}</TableCell>
                 <TableCell className="dark:text-white/75">{item.status || item.appointmentStatus || "N/A"}</TableCell>

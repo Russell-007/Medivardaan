@@ -5,7 +5,6 @@ import { authService } from '@/api/auth';
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
-    
     // Pass all query parameters to the backend
     const backendParams = new URLSearchParams();
     searchParams.forEach((value, key) => {
@@ -13,6 +12,8 @@ export async function GET(request) {
         if ((key.toLowerCase() === 'doctorid' || key.toLowerCase() === 'clinic') && (value === 'all' || value === '0' || value === '')) return;
         if (value) backendParams.append(key, value);
     });
+    backendParams.append('Mode', 1);
+    backendParams.append('DoctorID', 639);
 
     // Get Auth Token
     let token;
@@ -32,7 +33,7 @@ export async function GET(request) {
     const endpoint = '/Appointment/GetAppointments'; 
     const apiUrl = `${BASE_URL}${endpoint}?${backendParams.toString()}`;
     
-    console.log('[DEBUG] Fetching appointments from:', apiUrl);
+    console.log('[DEBUG] Fetching appointments for getAppointmentsReport from:', apiUrl);
     console.log('[DEBUG] Outgoing Request URL:', apiUrl);
     // console.log('[DEBUG] Outgoing Request Headers:', { ...headers, Authorization: 'Bearer ***' }); // Mask token
 
@@ -43,7 +44,7 @@ export async function GET(request) {
             'accept': '*/*',
         }
     });
-
+    
     // Handle 401 - Refresh Token and Retry
     if (response.status === 401) {
         console.log('Received 401, clearing token cache and retrying...');
@@ -67,10 +68,16 @@ export async function GET(request) {
     }
 
     console.log(`[DEBUG] Appointments API response status: ${response.status}`);
-    
-    
-    // Attempt to parse response
+    console.log('Final Query Params:', backendParams.toString());
+    console.log('URL:', apiUrl);
+    console.log('Status:', response.status);
+    console.log('Query:', backendParams.toString());
+
     const text = await response.text();
+    console.log('Raw response length:', text.length);
+    console.log('Raw response:', text);
+    // Attempt to parse response
+
     console.log(text);
     let data;
     try {
