@@ -213,7 +213,7 @@ export default function PatientClinicTransferPage() {
       <TableWrapper>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left border-0">
-            <thead className="bg-medivardaan-teal/10 dark:bg-accent text-foreground font-semibold border-b border-border">
+            <thead >
               <tr>
                 <th className="p-4 w-10">
                   <Checkbox />
@@ -227,11 +227,11 @@ export default function PatientClinicTransferPage() {
                 <th className="p-4 hidden md:table-cell">Clinic Name</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
+            <tbody >
               {reportData.map((row) => (
                 <tr
                   key={row.srNo}
-                  className="hover:bg-muted/50 transition-colors bg-card text-card-foreground"
+                  
                 >
                   <td className="p-4">
                     <Checkbox />

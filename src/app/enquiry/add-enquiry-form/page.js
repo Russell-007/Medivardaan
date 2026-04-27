@@ -22,6 +22,8 @@ import { useClinics, useDoctorTypes } from "@/hooks/useMasterData";
 import { useDoctors } from "@/hooks/useDoctors";
 import { PageHeader } from "@/components/shared/PageHeader";
 
+const LEAD_CLINIC_OVERRIDES_KEY = "leadClinicOverrides";
+
 export default function AddLeadFormPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -203,6 +205,44 @@ export default function AddLeadFormPage() {
 
       const response = await upsertLead(apiData);
       console.log("Lead upsert response:", response);
+
+      if (typeof window !== "undefined") {
+        const clinicName =
+          formData.clinicName ||
+          clinics.find(
+            (clinic) =>
+              String(clinic.clinicId || clinic.id) === String(formData.clinicID),
+          )?.clinicName ||
+          "";
+
+        const existingOverrides = JSON.parse(
+          window.localStorage.getItem(LEAD_CLINIC_OVERRIDES_KEY) || "[]",
+        );
+
+        const nextOverride = {
+          name: `${formData.firstName || ""} ${formData.lastName || ""}`.trim().toLowerCase(),
+          mobileNo: formData.mobileNo1 || "",
+          clinicID: String(formData.clinicID || ""),
+          clinicName,
+          updatedAt: Date.now(),
+        };
+
+        const dedupedOverrides = [
+          nextOverride,
+          ...existingOverrides.filter(
+            (item) =>
+              !(
+                item.mobileNo === nextOverride.mobileNo &&
+                item.name === nextOverride.name
+              ),
+          ),
+        ].slice(0, 50);
+
+        window.localStorage.setItem(
+          LEAD_CLINIC_OVERRIDES_KEY,
+          JSON.stringify(dedupedOverrides),
+        );
+      }
 
       const isMock = response.isMockData || false;
       const actionText = mode === 'edit' ? "updated" : "added";

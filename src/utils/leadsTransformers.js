@@ -105,7 +105,9 @@ export const transformAPILeadToDisplay = (apiLead) => {
     apiLead.clinicID ||
     apiLead.ClinicID ||
     apiLead.clinicId ||
-    apiLead.ClinicId;
+    apiLead.ClinicId ||
+    apiLead.branchID ||
+    apiLead.BranchID;
 
   const sourceId =
     apiLead.leadSourceID ||
@@ -122,11 +124,15 @@ export const transformAPILeadToDisplay = (apiLead) => {
     leadNo: apiLead.leadNo || apiLead.LeadNo || apiLead.EnquiryNo || apiLead.enquiryNo || `E${apiLead.leadID || apiLead.LeadID || apiLead.EnquiryID || apiLead.enquiryID}`,
     name: `${apiLead.firstName || apiLead.FirstName || ''} ${apiLead.lastName || apiLead.LastName || ''}`.trim(),
     mobileNo: apiLead.phoneNo1 || apiLead.PhoneNo1 || apiLead.MobileNo || apiLead.mobileNo || apiLead.Mobile || apiLead.mobile || '',
+    clinicID: clinicId,
     clinicName:
       apiLead.clinicName ||
       apiLead.ClinicName ||
       apiLead.clinic ||
       apiLead.Clinic ||
+      apiLead.strClinicName ||
+      apiLead.branchName ||
+      apiLead.BranchName ||
       getClinicNameFromID(clinicId),
     sourceName:
       apiLead.sourceName ||

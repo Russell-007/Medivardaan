@@ -135,7 +135,7 @@ export default function ConsentPage() {
       <TableWrapper>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left border-0">
-            <thead className="bg-medivardaan-teal/10 dark:bg-accent text-foreground font-semibold border-b border-border">
+            <thead >
               <tr>
                 <th className="p-4 w-16">Sr. No.</th>
                 <th className="p-4 w-32">Date</th>
@@ -147,11 +147,11 @@ export default function ConsentPage() {
                 <th className="p-4 text-center w-24">#</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
+            <tbody >
               {consentData.map((row) => (
                 <tr
                   key={row.id}
-                  className="hover:bg-muted/50 transition-colors bg-card text-card-foreground"
+                  
                 >
                   <td className="p-4 font-medium text-foreground">{row.id}</td>
                   <td className="p-4 text-foreground">{row.date}</td>

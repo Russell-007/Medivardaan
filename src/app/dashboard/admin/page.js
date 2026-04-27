@@ -640,19 +640,19 @@ export default function DashboardPage() {
                                     Expenditure Breakdown
                                 </h3>
                                 <TableWrapper>
-                                <table className="w-full text-sm text-gray-700 dark:text-white/75">
+                                <table className="w-full text-sm">
                                     <thead>
-                                        <tr className="border-b border-gray-300 dark:border-[#635985]/40 text-left">
+                                        <tr className="text-left">
                                             <th className="py-2">Heading</th>
                                             <th>Value</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr className="border-b border-gray-300 dark:border-[#635985]/40 text-left">
+                                        <tr className="text-left">
                                             <td className="py-2">Utilities</td>
                                             <td>₹25,000</td>
                                         </tr>
-                                        <tr className="border-b border-gray-300 dark:border-[#635985]/40 text-left">
+                                        <tr className="text-left">
                                             <td className="py-2">Equipment</td>
                                             <td>₹40,000</td>
                                         </tr>
@@ -673,9 +673,9 @@ export default function DashboardPage() {
                             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
                                 Branch Summary
                             </h3>
-                            {/* <table className="w-full text-sm text-gray-700 dark:text-white/75">
+                            {/* <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-300 dark:border-[#635985]/40 text-left">
+              <tr className="text-left">
                 <th>Branch</th>
                 <th>Patients</th>
                 <th>Procedures</th>

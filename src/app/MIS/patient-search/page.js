@@ -291,26 +291,26 @@ export default function PatientSearchPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-gray-200 dark:border-[#443C68]/50">
+                    <tr >
                       <th className="p-3 text-left text-sm font-semibold text-gray-700 dark:text-white/90 whitespace-nowrap">
                         Sr. No.
                       </th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         Case Paper No.
                       </th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         Name
                       </th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         Mobile No
                       </th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         Registration Date
                       </th>
-                      <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         Clinic Name
                       </th>
-                      <th className="px-4 py-3 text-center font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-center">
                         Actions
                       </th>
                     </tr>
@@ -329,31 +329,31 @@ export default function PatientSearchPage() {
                       displayedPatients.map((patient, index) => (
                         <tr
                           key={patient.id}
-                          className="border-t border-gray-200 dark:border-[#443C68]/50 hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                          
                         >
-                          <td className="p-3 text-sm text-gray-800 dark:text-white/90">
+                          <td className="p-3 text-sm">
                             {(currentPage - 1) * pageSize + index + 1}
                           </td>
-                          <td className="px-4 py-3 text-gray-800 dark:text-white/90">
+                          <td className="px-4 py-3">
                             {patient.patientCode || patient.casePaperNo || "-"}
                           </td>
-                          <td className="px-4 py-3 text-gray-800 dark:text-white/90 font-medium">
+                          <td className="px-4 py-3 font-medium">
                             {/* Handle typo in API response 'fristName' */}
                             {patient.fristName || patient.firstName
                               ? `${patient.fristName || patient.firstName} ${patient.lastName || ""}`
                               : patient.name || "-"}
                           </td>
-                          <td className="px-4 py-3 text-gray-800 dark:text-white/90">
+                          <td className="px-4 py-3">
                             {patient.mobile || patient.mobileNo || "-"}
                           </td>
-                          <td className="px-4 py-3 text-gray-800 dark:text-white/90">
+                          <td className="px-4 py-3">
                             {patient.registrationDate
                               ? new Date(
                                   patient.registrationDate,
                                 ).toLocaleDateString("en-GB")
                               : "-"}
                           </td>
-                          <td className="px-4 py-3 text-gray-800 dark:text-white/90">
+                          <td className="px-4 py-3">
                             {patient.clinicName || patient.ClinicName || "-"}
                           </td>
                           <td className="px-4 py-3 text-center">

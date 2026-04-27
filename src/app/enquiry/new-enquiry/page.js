@@ -39,6 +39,8 @@ import { Spinner } from "@/components/ui/spinner";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
+const LEAD_CLINIC_OVERRIDES_KEY = "leadClinicOverrides";
+
 export default function NewLeadPage() {
   const router = useRouter();
   const [filters, setFilters] = useState({
@@ -60,8 +62,8 @@ export default function NewLeadPage() {
   const { data: clinics = [] } = useClinics();
 
   useEffect(() => {
-    fetchLeads();
-  }, []);
+    fetchLeads(filters, currentPage);
+  }, [clinics]);
 
   const fetchLeads = async (searchFilters = filters, page = currentPage) => {
     try {
@@ -81,12 +83,68 @@ export default function NewLeadPage() {
         console.log("DEBUG: Raw Lead Data (Item 0):", data[0]);
       }
 
+      const clinicOverrides =
+        typeof window !== "undefined"
+          ? JSON.parse(
+              window.localStorage.getItem(LEAD_CLINIC_OVERRIDES_KEY) || "[]",
+            )
+          : [];
+
       const transformedLeads = Array.isArray(data)
-        ? data.map((lead, index) => ({
-            ...transformAPILeadToDisplay(lead),
-            // Calculate correct SrNo based on page and index
-            srNo: (page - 1) * pageSize + index + 1,
-          }))
+        ? data.map((lead, index) => {
+            const transformed = transformAPILeadToDisplay(lead);
+            // Override clinicName using the live clinics list from the API
+            // The transformer may fall back to a hardcoded map that returns "Unknown"
+            const clinicId =
+              lead.clinicID ||
+              lead.ClinicID ||
+              lead.clinicId ||
+              lead.ClinicId ||
+              transformed.clinicID ||
+              transformed.ClinicID;
+            if (clinicId) {
+              const matchedClinic = clinics.find(
+                (c) => String(c.clinicId || c.id) === String(clinicId),
+              );
+              if (matchedClinic) {
+                transformed.clinicName =
+                  matchedClinic.clinicName || matchedClinic.name;
+              } else if (lead.clinicName || lead.ClinicName) {
+                transformed.clinicName = lead.clinicName || lead.ClinicName;
+              }
+            }
+
+            if (!transformed.clinicName || transformed.clinicName === "Unknown") {
+              const matchedOverride = clinicOverrides.find((item) => {
+                const leadName = `${lead.firstName || lead.FirstName || ""} ${lead.lastName || lead.LastName || ""}`
+                  .trim()
+                  .toLowerCase();
+                const leadMobile =
+                  lead.phoneNo1 ||
+                  lead.PhoneNo1 ||
+                  lead.MobileNo ||
+                  lead.mobileNo ||
+                  lead.Mobile ||
+                  lead.mobile ||
+                  "";
+
+                return (
+                  item.mobileNo === String(leadMobile) &&
+                  item.name === leadName
+                );
+              });
+
+              if (matchedOverride?.clinicName) {
+                transformed.clinicName = matchedOverride.clinicName;
+              }
+            }
+
+            return {
+              ...transformed,
+              // Calculate correct SrNo based on page and index
+              srNo: (page - 1) * pageSize + index + 1,
+            };
+          })
         : [];
 
       setLeads(transformedLeads);

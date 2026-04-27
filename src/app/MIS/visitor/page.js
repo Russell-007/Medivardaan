@@ -180,7 +180,7 @@ export default function VisitorPage() {
       <TableWrapper>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
-            <thead className="bg-medivardaan-teal/10 dark:bg-accent text-foreground font-semibold border-b border-border">
+            <thead >
               <tr>
                 <th className="p-4 w-16">Sr. No.</th>
                 <th className="p-4">Patient No</th>
@@ -190,11 +190,11 @@ export default function VisitorPage() {
                 <th className="p-4 text-center">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
+            <tbody >
               {reportData.map((row) => (
                 <tr
                   key={row.srNo}
-                  className="border-t border-gray-200 dark:border-[#443C68]/50 hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                  
                 >
                   <td className="p-4 font-medium text-foreground">
                     {row.srNo}

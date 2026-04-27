@@ -162,7 +162,7 @@ export default function RepeatPatientReportPage() {
       <TableWrapper>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left border-0">
-            <thead className="bg-medivardaan-teal/10 dark:bg-accent text-foreground font-semibold border-b border-border">
+            <thead >
               <tr>
                 <th className="p-4 w-16">Sr No.</th>
                 <th className="p-4">Patient No</th>
@@ -172,11 +172,11 @@ export default function RepeatPatientReportPage() {
                 <th className="p-4 hidden md:table-cell">Clinic</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
+            <tbody >
               {reportData.map((row) => (
                 <tr
                   key={row.srNo}
-                  className="hover:bg-muted/50 transition-colors bg-card text-card-foreground"
+                  
                 >
                   <td className="p-4 font-medium text-foreground">
                     {row.srNo}

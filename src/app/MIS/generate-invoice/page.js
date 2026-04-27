@@ -128,7 +128,7 @@ export default function GenerateInvoicePage() {
       <TableWrapper>
         <div className="overflow-x-auto">
             <table className="w-full text-sm text-left border-0">
-                <thead className="bg-primary/20 dark:bg-accent text-foreground">
+                <thead >
                     <tr>
                         <th className="p-4 font-semibold w-[5%] text-center border-b border-border">Sr.No</th>
                         <th className="p-4 font-semibold w-[35%] border-b border-border">Treatment</th>
@@ -137,9 +137,9 @@ export default function GenerateInvoicePage() {
                         <th className="p-4 font-semibold w-[10%] text-center border-b border-border">Action</th>
                     </tr>
                 </thead>
-                <tbody className="divide-y divide-border">
+                <tbody >
                     {rows.map((row, index) => (
-                        <tr key={row.id} className="bg-background">
+                        <tr key={row.id} >
                             <td className="p-4 text-center text-muted-foreground">{index + 1}</td>
                             <td className="p-4">
                                 <Select value={row.treatmentId} onValueChange={(v) => handleTreatmentChange(row.id, v)}>

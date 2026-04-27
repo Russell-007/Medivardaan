@@ -183,26 +183,26 @@ export default function AllPatientListPage() {
               ) : (
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-gray-200 dark:border-[#443C68]/50">
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-700 dark:text-white/90">
+                    <tr >
+                      <th className="px-4 py-3 text-left">
                         Sr. No.
                       </th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         Patient Name
                       </th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         Mobile No.
                       </th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         Email
                       </th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         Age/Gender
                       </th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-left">
                         City
                       </th>
-                      <th className="px-4 py-3 text-center text-sm font-medium text-gray-700 dark:text-white/90">
+                      <th className="px-4 py-3 text-center">
                         Actions
                       </th>
                     </tr>
@@ -212,24 +212,24 @@ export default function AllPatientListPage() {
                       currentItems.map((patient, index) => (
                         <tr
                           key={patient.patientID || patient.PatientID || index}
-                          className="border-t border-gray-200 dark:border-[#443C68]/50 hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                          
                         >
-                          <td className="px-4 py-3 text-sm text-gray-800 dark:text-white/90">
+                          <td className="px-4 py-3 text-sm">
                             {(currentPage - 1) * itemsPerPage + index + 1}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-800 dark:text-white/90 font-medium">
+                          <td className="px-4 py-3 text-sm font-medium">
                             {patient.firstName ||
                               patient.fristName ||
                               patient.FirstName}{" "}
                             {patient.lastName || patient.LastName}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-800 dark:text-white/90">
+                          <td className="px-4 py-3 text-sm">
                             {patient.mobile || patient.MobileNo || "N/A"}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-800 dark:text-white/90">
+                          <td className="px-4 py-3 text-sm">
                             {patient.email || patient.Email || "N/A"}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-800 dark:text-white/90">
+                          <td className="px-4 py-3 text-sm">
                             {patient.age || patient.Age
                               ? `${patient.age || patient.Age} Y`
                               : ""}
@@ -239,7 +239,7 @@ export default function AllPatientListPage() {
                               : ""}
                             {patient.gender || patient.Gender || ""}
                           </td>
-                          <td className="px-4 py-3 text-sm text-gray-800 dark:text-white/90">
+                          <td className="px-4 py-3 text-sm">
                             {patient.cityName ||
                               patient.city ||
                               patient.CityName ||

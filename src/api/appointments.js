@@ -80,7 +80,11 @@ export const normalizeAppointment = (appointment = {}) => {
 export const getAppointments = async (params = {}) => {
     if (typeof window === 'undefined') return []; // Safety check for server-side
 
-    const queryString = new URLSearchParams(params).toString();
+    // Strip undefined/null/empty values so they aren't serialized as the string "undefined"
+    const cleanParams = Object.fromEntries(
+        Object.entries(params).filter(([, v]) => v !== undefined && v !== null && v !== '')
+    );
+    const queryString = new URLSearchParams(cleanParams).toString();
     const url = `/api/Appointments/getAppointments${queryString ? `?${queryString}` : ''}`;
     
     // Auth header from local storage

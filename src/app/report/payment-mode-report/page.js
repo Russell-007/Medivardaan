@@ -244,7 +244,7 @@ export default function PaymentModeReportPage() {
       {/* Table */}
       <TableWrapper>
         <Table className="w-full border-0">
-          <TableHeader className="bg-primary/20 dark:bg-[#e6ffcc]/20">
+          <TableHeader >
             <TableRow className="hover:bg-transparent">
               <TableHead className="min-w-[100px] font-bold text-gray-800 dark:text-white/90 border-r border-white dark:border-[#635985]/40">Month</TableHead>
               <TableHead className="min-w-[100px] font-bold text-gray-800 dark:text-white/90 border-r border-white dark:border-[#635985]/40">Cash</TableHead>
@@ -272,28 +272,28 @@ export default function PaymentModeReportPage() {
           <TableBody>
             {currentItems.length > 0 ? (
                 currentItems.map((row) => (
-                <TableRow key={row.id} className="hover:bg-gray-50 dark:bg-[#18122B] dark:hover:bg-[#393053]/50 border-b border-gray-200 dark:border-[#443C68]/50">
-                    <TableCell className="font-medium text-blue-500 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.month}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.cash}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.cheque}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.debitCard}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.creditCard}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.upi}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.bajaj}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.creditFair}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.liquid}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopse}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopseDebit}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopseHDFC}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopseCredit}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopseAmex}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.neft}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.razorpay}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.savein}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.unofin}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.fibe}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.flexUpi}</TableCell>
-                    <TableCell className="text-gray-600 dark:text-white/75 py-3">{row.medibuddy}</TableCell>
+                <TableRow key={row.id} >
+                    <TableCell className="font-medium text-primary border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.month}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.cash}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.cheque}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.debitCard}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.creditCard}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.upi}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.bajaj}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.creditFair}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.liquid}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopse}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopseDebit}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopseHDFC}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopseCredit}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.shopseAmex}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.neft}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.razorpay}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.savein}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.unofin}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.fibe}</TableCell>
+                    <TableCell className="border-r border-gray-200 dark:border-[#443C68]/50 py-3">{row.flexUpi}</TableCell>
+                    <TableCell className="py-3">{row.medibuddy}</TableCell>
                 </TableRow>
                 ))
             ) : (

@@ -106,7 +106,7 @@ export default function PatientMergeDeletePage() {
                 </div>
                 <TableWrapper className="flex-grow rounded-none border-0 shadow-none border-t border-border">
                   <table className="w-full text-sm text-left border-0">
-                    <thead className="bg-muted/50 text-muted-foreground font-medium text-xs uppercase tracking-wider">
+                    <thead >
                       <tr>
                         <th className="p-3 font-medium">Sr. No.</th>
                         <th className="p-3 font-medium">Patient Id</th>

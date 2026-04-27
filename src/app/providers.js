@@ -9,14 +9,17 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 export function AppProviders({ children }) {
   // Create QueryClient instance once using useState to prevent recreation on re-renders
-  const [queryClient] = useState(() => new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 60 * 1000, // 1 minute
-        retry: 1,
-      },
-    },
-  }));
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000, // 1 minute
+            retry: 1,
+          },
+        },
+      }),
+  );
 
   return (
     <Provider store={store}>

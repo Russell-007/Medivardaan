@@ -296,7 +296,7 @@ export default function PatientwiseCollectionReportPage() {
       {/* Table */}
       <div className="border border-gray-200 dark:border-[#443C68]/50 rounded-t-lg overflow-hidden">
         <Table>
-          <TableHeader className="bg-primary/20 dark:bg-[#e6ffcc]/20">
+          <TableHeader >
             <TableRow className="hover:bg-transparent">
               <TableHead className="w-[60px] font-bold text-gray-800 dark:text-white/90 border-r border-white dark:border-[#635985]/40">
                 Sr. No.

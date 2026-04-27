@@ -45,6 +45,7 @@ import axios from "axios";
 import CustomPagination from "@/components/ui/custom-pagination";
 import { validateMobile, validateEmail } from "@/utils/validation";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { TableWrapper } from "@/components/shared/TableWrapper";
 import {
   useClinics,
   useSpecialities,
@@ -982,23 +983,23 @@ export default function DoctorRegistrationPage() {
             </div>
           </div>
 
-          <div className="border border-gray-200 dark:border-[#443C68]/50 rounded-lg overflow-hidden">
-            <Table>
+          <TableWrapper>
+            <Table className="border-0">
               <TableHeader >
-                <TableRow className="hover:bg-primary/10">
-                  <TableHead className="font-bold text-gray-700 dark:text-white/75">
+                <TableRow>
+                  <TableHead className="font-bold">
                     Dr ID
                   </TableHead>
-                  <TableHead className="font-bold text-gray-700 dark:text-white/75">
+                  <TableHead className="font-bold">
                     Name
                   </TableHead>
-                  <TableHead className="font-bold text-gray-700 dark:text-white/75">
+                  <TableHead className="font-bold">
                     Mobile
                   </TableHead>
-                  <TableHead className="font-bold text-gray-700 dark:text-white/75">
+                  <TableHead className="font-bold">
                     Clinic
                   </TableHead>
-                  <TableHead className="font-bold text-gray-700 dark:text-white/75 text-center">
+                  <TableHead className="font-bold text-center">
                     Action
                   </TableHead>
                 </TableRow>
@@ -1012,10 +1013,7 @@ export default function DoctorRegistrationPage() {
                   </TableRow>
                 ) : paginatedDoctors.length > 0 ? (
                   paginatedDoctors.map((doctor) => (
-                    <TableRow
-                      key={doctor.doctorID}
-                      className="hover:bg-gray-50 dark:bg-[#18122B] dark:hover:bg-[#393053]/50"
-                    >
+                    <TableRow key={doctor.doctorID}>
                       <TableCell>{doctor.doctorID}</TableCell>
                       <TableCell className="font-medium">
                         {doctor.name}
@@ -1056,7 +1054,7 @@ export default function DoctorRegistrationPage() {
                 )}
               </TableBody>
             </Table>
-          </div>
+          </TableWrapper>
           <div className="flex justify-end pt-4">
             <CustomPagination
               totalItems={filteredDoctors.length}
